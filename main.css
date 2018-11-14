@@ -1,0 +1,27 @@
+#result {
+    font-size: 18px;
+    font-family: Open Sans;
+    color: #191970;
+    padding: 5px 0;
+}
+
+#addition:hover {
+    background: #02918c;
+    color: #fff;
+}
+
+#subtraction:hover {
+    background: #02918c;
+    color: #fff;
+}
+#multiplication:hover {
+    background: #02918c;
+    color: #fff;
+}
+#division:hover {
+    background: #02918c;
+    color: #fff;
+}
+.popup {
+    color: red;
+}

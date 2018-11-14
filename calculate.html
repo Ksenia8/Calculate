@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Калькулятор</title>
+	<meta charset="utf-8" />
+
+	<style>
+		#result {
+			font-size: 18px;
+			font-family: Open Sans;
+			color: #191970;
+			padding: 5px 0;
+		}
+
+		#addition:hover {
+		background: #02918c;
+		color: #fff;
+		}
+
+		#subtraction:hover {
+		background: #02918c;
+		color: #fff;
+		}
+		#multiplication:hover {
+		background: #02918c;
+		color: #fff;
+		}
+		#division:hover {
+		background: #02918c;
+		color: #fff;
+		}
+		.popup {
+			color: red;
+		}
+
+	</style>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	
+	<script>
+		
+		window.addEventListener("load", function () {
+			const app = new Vue({
+				el: "#app",
+				data: {
+					str1: "",
+					str2: "",
+					result: "",
+					showPopup: false
+				},
+
+				methods: {
+					add: function () {
+						let c = +this.str1+ +this.str2;
+						this.result = "Ответ: " + c;
+
+						if (this.str1 === "" || this.str2 === "") {
+							app.showPopup = true;
+							this.result="";
+						}
+					},
+
+					sub: function () {
+						let c = +this.str1 - +this.str2;
+						this.result = "Ответ: " + c;
+
+						if (this.str1 === "" || this.str2 === "") {
+							app.showPopup = true;
+							this.result="";
+						}
+					},
+
+					multi: function () {
+						let c = +this.str1 * +this.str2;
+						this.result = "Ответ: " + c;
+
+						if (this.str1 === "" || this.str2 === "") {
+							app.showPopup = true;
+							this.result="";
+						}
+					},
+					div: function () {
+						let c = +this.str1 / +this.str2;
+						this.result = "Ответ: " + c;
+
+						if (this.str1 === "" || this.str2 === "") {
+							app.showPopup = true;
+							this.result="";
+						}
+					},
+					change: function () {
+						this.str1 = "";
+						this.str2 = "";
+						this.result = "";
+						app.showPopup = false;
+						
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="app">
+		
+		<p>
+			
+			<input v-model = "str1" type="text" placeholder="Введите А">
+			<input v-model = "str2" type="text" placeholder="Введите Б">
+  
+		</p>
+
+		<button @click="add()">+</button>
+		<button @click="sub()">-</button>
+		<button @click="multi()">*</button>
+		<button @click="div()">/</button>
+
+		<button @click="change()">Обновить</button>
+
+		<div v-if = "showPopup" class="popup">Введите два числа!</div>
+
+		<p>{{ result }}</p>
+	</div>
+	
+</body>
+</html>
